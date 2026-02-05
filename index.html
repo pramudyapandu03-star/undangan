@@ -23,21 +23,40 @@
         }
 
         /* FOTO BACKGROUND FULL SAMPAI BAWAH */
-        .bg-fixed {
-            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), 
-                              url('https://i.pinimg.com/1200x/03/63/b0/0363b043dbc088b220d92db648655aa3.jpg');
-            background-attachment: fixed; /* Ini yang buat foto diam saat di-scroll */
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            min-height: 100vh;
-            width: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: -1;
-        }
+        /* PERBAIKAN BACKGROUND UNTUK HP */
+.bg-fixed {
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), 
+                      url('https://i.pinimg.com/1200x/03/63/b0/0363b043dbc088b220d92db648655aa3.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    /* Ini rahasianya agar tidak blank hitam di HP */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    
+    /* Menghilangkan background-attachment fixed yang bikin error di HP */
+    background-attachment: scroll; 
+    }
 
+    /* Pastikan konten utama tidak transparan berlebihan */
+    .content-wrapper {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        overflow-x: hidden; /* Mencegah layar geser kanan-kiri */
+    }
+
+    /* Tambahan agar teks tetap terbaca jika foto sangat terang */
+    .hero {
+        background: transparent;
+        }
         .content-wrapper {
             position: relative;
             z-index: 1;
