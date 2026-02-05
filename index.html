@@ -4,57 +4,271 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Undangan Pernikahan - Budi & Shinta</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    
     <style>
-        body { font-family: 'Poppins', sans-serif; background-color: #f8f1f1; color: #444; }
-        .hero { 
-            height: 100vh; 
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover; background-position: center;
-            display: flex; align-items: center; justify-content: center; color: white; text-align: center;
+        :root {
+            --accent-color: #e63946; /* Rose Pink */
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --text-dark: #2b2d42;
         }
-        h1 { font-family: 'Great Vibes', cursive; font-size: 5rem; }
-        .section { padding: 60px 20px; text-align: center; }
-        .map-container { 
-            height: 400px; width: 100%; border-radius: 15px; overflow: hidden; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 20px;
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
         }
-        .btn-custom { background-color: #d4a373; color: white; border-radius: 25px; padding: 10px 30px; text-decoration: none; }
-        .btn-custom:hover { background-color: #bc8a5f; color: white; }
+
+        /* FOTO BACKGROUND FULL SAMPAI BAWAH */
+        .bg-fixed {
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), 
+                              url('https://i.pinimg.com/1200x/03/63/b0/0363b043dbc088b220d92db648655aa3.jpg');
+            background-attachment: fixed; /* Ini yang buat foto diam saat di-scroll */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 100vh;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Hero Full Page */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(4rem, 12vw, 7rem);
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+        }
+
+        /* Glassmorphism Card (Efek Transparan Mewah) */
+        .card-glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 40px;
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            height: 100%;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .card-glass:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .icon-circle {
+            width: 80px;
+            height: 80px;
+            background: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            color: white;
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 3rem;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+
+        .btn-love {
+            background: var(--accent-color);
+            color: white;
+            border-radius: 50px;
+            padding: 15px 40px;
+            font-weight: 600;
+            border: none;
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.3);
+            transition: 0.3s;
+        }
+
+        .btn-love:hover {
+            background: #ba2d3a;
+            color: white;
+            letter-spacing: 1px;
+        }
+
+        .map-frame {
+            border-radius: 20px;
+            overflow: hidden;
+            height: 300px;
+            margin-bottom: 20px;
+            border: 5px solid white;
+        }
+
+        footer {
+            padding: 60px 0;
+            color: white;
+            text-align: center;
+            background: rgba(0,0,0,0.7);
+            margin-top: 100px;
+        }
+
+        /* Animasi Mengambang */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
     </style>
 </head>
 <body>
 
-    <div class="hero">
-        <div>
-            <p>The Wedding of</p>
-            <h1>Budi & Shinta</h1>
-            <p>02 . 02 . 2026</p>
+    <div class="bg-fixed"></div>
+
+    <div class="content-wrapper">
+        <header class="hero">
+            <div class="floating">
+                <p class="text-uppercase fw-bold ls-2">The Wedding Celebration of</p>
+                <h1>Budi & Shinta</h1>
+                <div class="mt-4 fs-3">
+                    <span class="badge bg-light text-dark px-4 py-2 rounded-pill">02 . 02 . 2026</span>
+                </div>
+                <div class="mt-5">
+                    <i class="bi bi-chevron-double-down fs-1"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <h2 class="section-title">Informasi Acara</h2>
+            
+            <div class="row g-5 justify-content-center mb-5">
+                <div class="col-lg-5">
+                    <div class="card-glass">
+                        <div class="icon-circle shadow-lg"><i class="bi bi-heart-fill"></i></div>
+                        <h3 class="fw-bold mb-3">Akad Nikah</h3>
+                        <p class="fs-5 mb-1"><i class="bi bi-calendar3 me-2 text-danger"></i>Minggu, 02 Feb 2026</p>
+                        <p class="fs-5 mb-4"><i class="bi bi-clock me-2 text-danger"></i>08.00 - 10.00 WIB</p>
+                        <hr>
+                        <p class="text-muted">Kediaman Mempelai Wanita<br>Jakarta Pusat</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-5">
+                    <div class="card-glass">
+                        <div class="icon-circle shadow-lg"><i class="bi bi-cup-hot-fill"></i></div>
+                        <h3 class="fw-bold mb-3">Resepsi</h3>
+                        <p class="fs-5 mb-1"><i class="bi bi-calendar3 me-2 text-danger"></i>Minggu, 02 Feb 2026</p>
+                        <p class="fs-5 mb-4"><i class="bi bi-clock me-2 text-danger"></i>10.00 - 13.00 WIB</p>
+                        <hr>
+                        <p class="text-muted">Gedung Serbaguna Indah<br>Jl. Melati No. 123, Jakarta Pusat</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-title">Kehadiran & Lokasi</h2>
+
+            <div class="row g-5 justify-content-center">
+                <div class="col-lg-5">
+                    <div class="card-glass">
+                        <h3 class="fw-bold mb-4">RSVP & Ucapan</h3>
+                        <form id="rsvpForm">
+                        <div class="mb-3">
+                            <input type="text" id="namaTamu" class="form-control form-control-lg rounded-pill" placeholder="Nama Lengkap" required>
+                        </div>
+                        <div class="mb-3">
+                            <select id="statusHadir" class="form-select form-control-lg rounded-pill">
+                                <option value="Hadir">Hadir</option>
+                                <option value="Tidak Hadir">Tidak Hadir</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <textarea id="pesanDoa" class="form-control rounded-4" rows="4" placeholder="Berikan doa restu Anda..."></textarea>
+                        </div>
+                        <button type="button" onclick="kirimKeWA()" class="btn btn-love w-100 fs-5">Kirim Doa & Konfirmasi</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="card-glass">
+                        <h3 class="fw-bold mb-4">Peta Lokasi</h3>
+                        <div class="map-frame">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3583.435478794031!2d109.5554167!3d-7.029833300000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zN8KwMDEnNDcuNCJTIDEwOcKwMzMnMTkuNSJF!5e1!3m2!1sid!2sid!4v1770302468307!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <a href="https://maps.app.goo.gl/sbj2Z2jpG1vfXafb6" target="_blank" class="btn btn-love w-100">
+                        <i class="bi bi-geo-alt-fill me-2"></i>Petunjuk Jalan
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <footer>
+            <div class="container">
+                <h2 class="family-font" style="font-family: 'Great Vibes'; font-size: 3rem;">Budi & Shinta</h2>
+                <p class="mt-3">Merupakan suatu kehormatan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir di hari bahagia kami.</p>
+                <div class="mt-4 fs-4">
+                    <i class="bi bi-instagram mx-2"></i>
+                    <i class="bi bi-facebook mx-2"></i>
+                    <i class="bi bi-whatsapp mx-2"></i>
+                </div>
+                <p class="mt-5 opacity-50">&copy; 2026 Crafted with Love</p>
+            </div>
+        </footer>
     </div>
 
-    <div class="container section">
-        <h2 class="mb-4">Acara Resepsi</h2>
-        <p>Minggu, 02 Februari 2026</p>
-        <p>Pukul 10.00 - 13.00 WIB</p>
-        <p><strong>Gedung Serbaguna Indah</strong><br>Jl. Melati No. 123, Jakarta Pusat</p>
-        
-        <hr class="my-5">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    function kirimKeWA() {
+    // 1. Mengambil data dari inputan form
+    const nama = document.getElementById('namaTamu').value;
+    const hadir = document.getElementById('statusHadir').value;
+    const pesan = document.getElementById('pesanDoa').value;
 
-        <h3>Lokasi Resepsi</h3>
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3583.4355145108734!2d109.55284307454245!3d-7.029828668870664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zN8KwMDEnNDcuNCJTIDEwOcKwMzMnMTkuNSJF!5e1!3m2!1sid!2sid!4v1770299171220!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-        
-        <div class="mt-4">
-            <a href="https://maps.app.goo.gl/xxxx" target="_blank" class="btn-custom">Buka di Google Maps</a>
-        </div>
-    </div>
+    // 2. NOMOR WHATSAPP ANDA (WAJIB GANTI DI SINI)
+    // Gunakan kode negara 62 di depan, tanpa tanda +, tanpa spasi, dan tanpa angka 0
+    // Contoh: jika nomornya 08123456789, tulis jadi 628123456789
+    const nomorWA = "6281288503458"; 
 
-    <footer class="text-center py-4 bg-dark text-white">
-        <p>&copy; 2026 Budi & Shinta Wedding</p>
-    </footer>
+    // 3. Validasi sederhana agar nama tidak kosong
+    if (nama.trim() === "") {
+        alert("Mohon isi nama Anda terlebih dahulu.");
+        return;
+    }
 
+    // 4. Menyusun format pesan
+    const teks = `Halo, saya *${nama}*%0A%0AKonfirmasi Kehadiran: *${hadir}*%0A%0APesan Doa: _${pesan}_`;
+
+    // 5. Membuat link otomatis ke WhatsApp
+    const linkWA = `https://api.whatsapp.com/send?phone=${nomorWA}&text=${teks}`;
+
+    // 6. Membuka tab baru/aplikasi WhatsApp
+    window.open(linkWA, '_blank');
+    }
+</script>
 </body>
 </html>
