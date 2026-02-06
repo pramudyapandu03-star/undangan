@@ -3,434 +3,602 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>THE ROYAL WEDDING | BUDI & SHINTA | EMPEROR EDITION</title>
-    <meta name="theme-color" content="#000000">
+    <meta name="description" content="The Royal Wedding of Budi & Shinta">
+    <meta name="theme-color" content="#050505">
+    <title>THE ETERNAL VOW | BUDI & SHINTA</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Great+Vibes&family=Manrope:wght@200;300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
 
     <style>
         /* * ==========================================================================
-         * [2] CSS ARCHITECTURE & VARIABLES
-         * ==========================================================================
+         * [2] GLOBAL VARIABLES & RESET
+         * ========================================================================== 
          */
         :root {
-            /* COLORS: ROYAL PALETTE */
-            --bg-void: #050505;
-            --bg-glass: rgba(20, 20, 20, 0.6);
-            --bg-glass-strong: rgba(10, 10, 10, 0.85);
+            /* COLOR PALETTE - OBSIDIAN & LIQUID GOLD */
+            --bg-master: #030303;
+            --bg-glass: rgba(255, 255, 255, 0.03);
+            --bg-glass-heavy: rgba(15, 15, 15, 0.75);
             
-            /* GOLD GRADIENT MATRIX */
-            --gold-1: #BF953F;
-            --gold-2: #FCF6BA;
-            --gold-3: #B38728;
-            --gold-4: #FBF5B7;
-            --gold-5: #AA771C;
+            --border-faint: rgba(255, 255, 255, 0.08);
+            --border-gold: rgba(212, 175, 55, 0.4);
             
-            /* UI ELEMENTS */
-            --border-light: rgba(255, 255, 255, 0.1);
-            --border-gold: rgba(191, 149, 63, 0.3);
-            --shadow-soft: 0 20px 40px rgba(0,0,0,0.6);
-            --shadow-glow: 0 0 20px rgba(191, 149, 63, 0.2);
+            --gold-1: #bf953f;
+            --gold-2: #fcf6ba;
+            --gold-3: #b38728;
+            --gold-4: #fbf5b7;
+            --gold-5: #aa771c;
             
-            /* FONTS */
-            --f-display: 'Cinzel', serif;
-            --f-script: 'Alex Brush', cursive;
-            --f-ui: 'Manrope', sans-serif;
+            --text-light: #ECECEC;
+            --text-muted: #8A8A8A;
             
-            /* ANIMATION CURVES (iOS FEEL) */
-            --ease-ios: cubic-bezier(0.32, 0.72, 0, 1);
-            --ease-bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            /* TYPOGRAPHY CONFIG */
+            --font-latin: 'Great Vibes', cursive;
+            --font-royal: 'Cinzel', serif;
+            --font-body: 'Manrope', sans-serif;
+            
+            /* ANIMATION TIMING */
+            --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            --ease-smooth: cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* RESET & BASE */
-        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; -webkit-tap-highlight-color: transparent; }
-        
+        * {
+            margin: 0; padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
         body {
-            background-color: var(--bg-void);
-            color: #fff;
-            font-family: var(--f-ui);
+            background-color: var(--bg-master);
+            color: var(--text-light);
+            font-family: var(--font-body);
             overflow-x: hidden;
             width: 100vw;
         }
 
-        /* SCROLLBAR CUSTOMIZATION */
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: var(--bg-void); }
-        ::-webkit-scrollbar-thumb { background: var(--gold-3); border-radius: 10px; }
+        /* SCROLLBAR STYLING */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-master); }
+        ::-webkit-scrollbar-thumb { background: var(--gold-3); border-radius: 4px; }
 
         /* * ==========================================================================
-         * [3] ANIMATION KEYFRAMES (THE SOUL)
-         * ==========================================================================
+         * [3] ADVANCED ANIMATIONS (KEYFRAMES)
+         * ========================================================================== 
          */
         
-        /* LIQUID GOLD TEXT ANIMATION */
-        @keyframes liquidGold {
+        /* The "Liquid Gold" Flow */
+        @keyframes shimmerGold {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        /* ROTATING DISC (MUSIC) */
-        @keyframes spinVinyl {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        /* Soft Floating */
+        @keyframes levitate {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
 
-        /* PULSE GLOW */
-        @keyframes pulseGlow {
-            0% { box-shadow: 0 0 0 0 rgba(191, 149, 63, 0.4); }
-            70% { box-shadow: 0 0 0 20px rgba(191, 149, 63, 0); }
+        /* Vinyl Spin */
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Pulse for Buttons */
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(191, 149, 63, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(191, 149, 63, 0); }
             100% { box-shadow: 0 0 0 0 rgba(191, 149, 63, 0); }
         }
 
-        /* FLOATING ELEMENT */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
+        /* Marquee Scroll */
+        @keyframes scrollLeft {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
         }
-
-        /* FADE UP REVEAL */
-        .reveal-up { opacity: 0; transform: translateY(60px); transition: all 1.2s var(--ease-ios); }
-        .reveal-up.active { opacity: 1; transform: translateY(0); }
 
         /* * ==========================================================================
-         * [4] UTILITY CLASSES (LUXURY ENGINE)
-         * ==========================================================================
+         * [4] UTILITY CLASSES & COMPONENTS
+         * ========================================================================== 
          */
+
+        /* Typography Utilities */
+        .font-latin { font-family: var(--font-latin); }
+        .font-royal { font-family: var(--font-royal); }
         
-        .gold-text {
-            background: linear-gradient(45deg, var(--gold-1), var(--gold-2), var(--gold-3), var(--gold-4), var(--gold-5));
-            background-size: 300% 300%;
+        /* The Star of the Show: Gold Script Text */
+        .text-gold-script {
+            font-family: var(--font-latin);
+            background: linear-gradient(
+                90deg,
+                var(--gold-1),
+                var(--gold-2),
+                var(--gold-3),
+                var(--gold-4),
+                var(--gold-1)
+            );
+            background-size: 300% 100%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: liquidGold 6s ease infinite;
-            text-shadow: 0 0 30px rgba(191, 149, 63, 0.3);
+            animation: shimmerGold 5s linear infinite;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
+            line-height: 1.2;
         }
 
-        .glass-ios {
+        /* Glass Cards (iOS Style) */
+        .glass-card {
             background: var(--bg-glass);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid var(--border-light);
-            border-top: 1px solid rgba(255,255,255,0.15);
-            box-shadow: var(--shadow-soft);
-            border-radius: 32px;
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid var(--border-faint);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            transition: all 0.4s var(--ease-smooth);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .glass-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
         }
 
-        .btn-luxury {
-            background: linear-gradient(90deg, var(--bg-void), #1a1a1a);
-            border: 1px solid var(--gold-1);
+        .glass-card:hover {
+            transform: translateY(-5px) scale(1.01);
+            border-color: var(--gold-3);
+            box-shadow: 0 30px 60px rgba(179, 135, 40, 0.15);
+        }
+
+        /* Luxury Button */
+        .btn-gold {
+            background: transparent;
             color: var(--gold-2);
-            padding: 18px 40px;
-            border-radius: 100px;
-            font-family: var(--f-display);
+            border: 1px solid var(--gold-1);
+            padding: 14px 35px;
+            font-family: var(--font-royal);
             text-transform: uppercase;
             letter-spacing: 3px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+            border-radius: 50px;
             position: relative;
             overflow: hidden;
-            transition: all 0.4s var(--ease-ios);
+            transition: 0.3s;
             z-index: 1;
+        }
+        
+        .btn-gold::after {
+            content: ''; position: absolute; inset: 0;
+            background: var(--gold-1);
+            transform: scaleX(0); transform-origin: right;
+            transition: transform 0.4s var(--ease-elastic);
+            z-index: -1;
+        }
+        
+        .btn-gold:hover { color: #000; letter-spacing: 5px; box-shadow: 0 0 20px rgba(191, 149, 63, 0.4); }
+        .btn-gold:hover::after { transform: scaleX(1); transform-origin: left; }
+
+        /* Icons */
+        .icon-box {
+            width: 60px; height: 60px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; border: 1px solid var(--gold-3);
+            color: var(--gold-2); font-size: 1.5rem;
+            margin-bottom: 20px;
+            background: rgba(0,0,0,0.3);
+            animation: levitate 4s ease-in-out infinite;
+        }
+
+        /* INNOVATION: MAP STYLING */
+        .map-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-gold);
+            margin-top: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .map-iframe {
+            width: 100%;
+            height: 250px;
+            filter: grayscale(1) invert(0.9) contrast(1.2); /* Inovasi: Dark mode maps agar menyatu dengan tema */
+            transition: 0.5s;
+        }
+        .map-wrapper:hover .map-iframe {
+            filter: grayscale(0) invert(0) contrast(1);
+        }
+        .btn-directions {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-        }
-        
-        .btn-luxury::before {
-            content: ''; position: absolute; inset: 0;
             background: linear-gradient(45deg, var(--gold-1), var(--gold-3));
-            z-index: -1; transform: translateX(-101%);
-            transition: transform 0.4s var(--ease-ios);
+            color: #000 !important;
+            font-weight: 700;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-top: 20px;
+            font-family: var(--font-royal);
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(191, 149, 63, 0.3);
         }
-        
-        .btn-luxury:hover::before { transform: translateX(0); }
-        .btn-luxury:hover { color: #000; box-shadow: var(--shadow-glow); border-color: transparent; }
+        .btn-directions:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(191, 149, 63, 0.5);
+        }
 
         /* * ==========================================================================
-         * [5] COMPONENT STYLES
-         * ==========================================================================
+         * [5] LAYOUT & SECTIONS
+         * ========================================================================== 
          */
 
-        /* LOADING SCREEN */
-        #preloader {
-            position: fixed; inset: 0; z-index: 10000;
-            background: #000;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-        }
-        .loader-logo { font-family: var(--f-display); font-size: 3rem; margin-bottom: 20px; letter-spacing: 5px; }
-        .loader-bar { width: 200px; height: 2px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
-        .loader-fill { width: 0%; height: 100%; background: var(--gold-2); transition: width 0.3s ease; }
-
-        /* MUSIC CONTROL */
-        .music-dock {
-            position: fixed; top: 30px; right: 30px; z-index: 9000;
+        /* Music Floating Widget */
+        .music-floater {
+            position: fixed; top: 30px; right: 20px; z-index: 9999;
             display: flex; align-items: center; gap: 15px;
-            padding: 10px 10px 10px 20px; border-radius: 50px;
-            border: 1px solid var(--border-light);
-            background: rgba(0,0,0,0.5); backdrop-filter: blur(10px);
+            background: rgba(0,0,0,0.6); backdrop-filter: blur(10px);
+            padding: 8px 15px 8px 8px; border-radius: 50px;
+            border: 1px solid var(--border-faint);
+            cursor: pointer;
             transition: 0.3s;
         }
-        .music-dock:hover { border-color: var(--gold-1); background: rgba(0,0,0,0.8); }
-        .vinyl-icon {
-            width: 40px; height: 40px; border-radius: 50%;
-            background: url('https://cdn-icons-png.flaticon.com/512/109/109197.png'); /* Generic Vinyl Icon */
-            background-size: cover; border: 2px solid var(--gold-1);
+        .music-floater:active { transform: scale(0.95); }
+        .vinyl-disc {
+            width: 45px; height: 45px; border-radius: 50%;
+            background: radial-gradient(#111 40%, #333 41%, #111 45%, #111 100%);
+            border: 2px solid var(--gold-3);
+            position: relative;
         }
-        .vinyl-spinning { animation: spinVinyl 3s linear infinite; }
-        .music-text { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: var(--gold-4); }
+        .vinyl-disc.playing { animation: spin 4s linear infinite; }
+        .music-bars { display: flex; gap: 3px; align-items: flex-end; height: 20px; }
+        .bar-line { width: 3px; background: var(--gold-2); animation: levitate 0.8s infinite alternate; }
+        .bar-line:nth-child(2) { animation-delay: 0.1s; }
+        .bar-line:nth-child(3) { animation-delay: 0.2s; }
 
-        /* HERO SECTION */
-        .hero {
-            min-height: 100vh; position: relative;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; padding: 20px; z-index: 10;
-        }
-        .hero-title {
-            font-size: clamp(3.5rem, 12vw, 8rem);
-            font-weight: 400; line-height: 0.9;
-            margin: 10px 0;
-            letter-spacing: -0.02em;
-        }
-        .hero-subtitle {
-            font-family: var(--f-script); font-size: 2.5rem; color: var(--gold-2);
-            margin-bottom: 30px; opacity: 0.8;
-        }
-
-        /* NAVIGATION DOCK */
-        .ios-dock {
+        /* Navigation Dock (Mobile Friendly) */
+        .nav-island {
             position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
-            z-index: 8000; display: flex; gap: 15px; padding: 15px 25px;
-            border-radius: 24px; background: rgba(20, 20, 20, 0.6);
-            backdrop-filter: blur(30px); border: 1px solid rgba(255,255,255,0.08);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            z-index: 9990;
+            background: rgba(15, 15, 15, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-faint);
+            border-radius: 28px;
+            padding: 12px 25px;
+            display: flex; gap: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
         }
-        .dock-item {
-            color: #fff; font-size: 1.2rem; padding: 10px; border-radius: 16px;
-            transition: all 0.3s var(--ease-bounce); text-decoration: none;
-            display: flex; align-items: center; justify-content: center;
+        .nav-link-item {
+            color: #777; font-size: 1.3rem; transition: 0.3s;
+            position: relative;
         }
-        .dock-item:hover, .dock-item.active {
-            background: var(--gold-1); color: #000; transform: translateY(-10px) scale(1.1);
+        .nav-link-item.active, .nav-link-item:hover { color: var(--gold-2); transform: translateY(-5px); }
+        .nav-link-item.active::after {
+            content: ''; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%);
+            width: 4px; height: 4px; background: var(--gold-1); border-radius: 50%;
         }
 
-        /* SECTIONS GENERAL */
-        .section-padding { padding: 120px 20px; position: relative; z-index: 5; }
-        .container-royal { max-width: 1200px; margin: 0 auto; }
+        /* Hero Section */
+        .hero {
+            height: 100vh; width: 100%;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            text-align: center; position: relative;
+            padding: 0 20px;
+        }
+        .hero-names { font-size: clamp(3.5rem, 15vw, 9rem); z-index: 2; margin-bottom: 10px; }
+        .hero-date { letter-spacing: 8px; font-size: 0.9rem; color: var(--gold-1); text-transform: uppercase; margin-top: 20px; }
 
-        /* COUPLE CARDS */
-        .couple-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 60px; }
-        .profile-card {
-            padding: 40px; text-align: center; position: relative; overflow: hidden;
-            transition: transform 0.4s;
-        }
-        .profile-card:hover { transform: translateY(-10px); }
-        .img-frame {
-            width: 100%; height: 500px; border-radius: 20px; overflow: hidden;
-            margin-bottom: 30px; position: relative; border: 1px solid var(--border-light);
-        }
-        .img-frame img {
-            width: 100%; height: 100%; object-fit: cover;
-            transition: transform 1.5s ease; filter: grayscale(20%);
-        }
-        .profile-card:hover img { transform: scale(1.1); filter: grayscale(0%); }
+        /* Section Spacing */
+        .section-gap { padding: 100px 0; position: relative; z-index: 5; }
 
-        /* MAP & LOCATION */
-        .map-container {
-            width: 100%; height: 400px; border-radius: 20px;
-            overflow: hidden; position: relative;
+        /* Timeline Carousel (Horizontal) */
+        .story-scroller {
+            display: flex; overflow-x: auto; gap: 20px; padding: 20px 5%;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none; scrollbar-width: none;
+        }
+        
+        
+        #story { padding: 120px 0; background: transparent; }
+        
+        .story-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 KOLOM SEMPURNA */
+            gap: 25px;
+            perspective: 1000px;
+        }
+
+        .story-card {
+            background: var(--bg-glass-heavy);
+            border-radius: 25px;
             border: 1px solid var(--border-gold);
-            filter: grayscale(100%) invert(90%) contrast(120%); /* Dark Mode Map Hack */
-        }
-        .map-overlay-btn {
-            position: absolute; bottom: 30px; right: 30px; z-index: 10;
-        }
-
-        /* COUNTDOWN BOXES */
-        .timer-box {
-            background: rgba(255,255,255,0.05); padding: 20px;
-            border-radius: 15px; border: 1px solid var(--border-light);
-            min-width: 100px;
+            padding: 40px 30px;
+            height: 500px; /* TINGGI SERAGAM */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            text-align: center;
+            cursor: pointer;
         }
 
-        /* RESPONSIVE */
-        @media (max-width: 992px) {
-            .couple-wrapper { grid-template-columns: 1fr; }
-            .hero-title { font-size: 4rem; }
-            .ios-dock { bottom: 20px; padding: 10px 20px; width: 90%; justify-content: space-between; }
+        .story-card:hover {
+            transform: translateY(-20px) rotateX(10deg);
+            border-color: var(--gold-1);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 20px var(--gold-1);
+        }
+
+        .story-card .icon-box {
+            width: 80px; height: 80px; margin: 0 auto 25px;
+            border: 2px solid var(--gold-1);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; color: var(--gold-1);
+            background: rgba(212, 175, 55, 0.1);
+            transition: 0.5s;
+        }
+
+        .story-card:hover .icon-box {
+            background: var(--gold-1);
+            color: #000;
+            transform: scale(1.1) rotate(360deg);
+        }
+
+        /* RSVP Form */
+        .form-control-lux {
+            background: rgba(255,255,255,0.05);
+            border: none; border-bottom: 1px solid var(--gold-5);
+            color: var(--gold-2); padding: 15px; border-radius: 0;
+            transition: 0.3s;
+        }
+        .form-control-lux:focus {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--gold-1); box-shadow: none; color: #fff;
+        }
+        .form-control-lux::placeholder { color: var(--gold-1); opacity: 0.6; }
+
+        /* Media Queries (Mobile Optimization) */
+        @media (max-width: 768px) {
+            .hero-names { line-height: 1.1; margin-bottom: 20px; }
+            .nav-island { bottom: 20px; width: 90%; justify-content: space-between; gap: 0; padding: 15px 25px; }
+            .section-gap { padding: 70px 0; }
+            .glass-card { padding: 25px !important; }
+            .story-grid { grid-template-columns: 1fr; }
+            .story-card { height: auto; min-height: 400px; }
         }
     </style>
 </head>
 <body>
 
-    <canvas id="bg-canvas" style="position: fixed; inset: 0; z-index: 0; pointer-events: none;"></canvas>
-    
-    <audio id="bg-music" loop>
+    <canvas id="starfield" style="position: fixed; inset: 0; z-index: 0; pointer-events: none;"></canvas>
+    <div style="position: fixed; inset: 0; background: radial-gradient(circle at center, transparent 0%, #030303 90%); z-index: 1; pointer-events: none;"></div>
+
+    <audio id="bg-audio" loop>
         <source src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Schubert_-_Impromptu_Op._90_No._3.ogg" type="audio/ogg">
     </audio>
 
-    <div id="preloader">
-        <div class="loader-logo gold-text">B & S</div>
-        <div class="loader-bar"><div class="loader-fill" id="progress"></div></div>
-        <div style="margin-top: 15px; font-size: 10px; letter-spacing: 4px; color: #666;">LOADING ASSETS</div>
-    </div>
-
-    <div class="music-dock" id="music-btn">
-        <div class="vinyl-icon" id="vinyl"></div>
-        <div class="d-flex flex-column">
-            <span class="music-text fw-bold">Schubert</span>
-            <span class="music-text" style="opacity: 0.7;">Impromptu Op. 90</span>
+    <div id="loader" style="position: fixed; inset: 0; background: #000; z-index: 10000; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <h1 class="font-latin text-gold-script" style="font-size: 4rem;">B & S</h1>
+        <div style="width: 150px; height: 1px; background: #333; margin-top: 20px; overflow: hidden; position: relative;">
+            <div id="loader-bar" style="position: absolute; left: 0; top: 0; height: 100%; width: 0%; background: var(--gold-1);"></div>
         </div>
-        <i class="bi bi-play-fill fs-4 text-warning" id="play-icon"></i>
+        <p class="font-royal small mt-3 text-gold-1" style="letter-spacing: 3px; font-size: 10px;">LOADING LUXURY EXPERIENCE</p>
     </div>
 
-    <nav class="ios-dock">
-        <a href="#home" class="dock-item active"><i class="bi bi-house"></i></a>
-        <a href="#couple" class="dock-item"><i class="bi bi-heart"></i></a>
-        <a href="#event" class="dock-item"><i class="bi bi-calendar-check"></i></a>
-        <a href="#gallery" class="dock-item"><i class="bi bi-images"></i></a>
-        <a href="#rsvp" class="dock-item"><i class="bi bi-envelope-paper"></i></a>
+    <div class="music-floater" id="music-toggle">
+        <div class="vinyl-disc" id="vinyl"></div>
+        <div class="d-none d-md-block text-start">
+            <div class="small fw-bold text-gold-2" style="font-size: 11px; letter-spacing: 1px;">NOW PLAYING</div>
+            <div class="text-gold-1" style="font-size: 10px; opacity: 0.7;">Schubert - Impromptu</div>
+        </div>
+        <div class="music-bars ms-2">
+            <div class="bar-line"></div><div class="bar-line"></div><div class="bar-line"></div>
+        </div>
+    </div>
+
+    <nav class="nav-island">
+        <a href="#hero" class="nav-link-item active"><i class="bi bi-house-door"></i></a>
+        <a href="#couple" class="nav-link-item"><i class="bi bi-heart"></i></a>
+        <a href="#story" class="nav-link-item"><i class="bi bi-journal-album"></i></a>
+        <a href="#event" class="nav-link-item"><i class="bi bi-calendar-check"></i></a>
+        <a href="#rsvp" class="nav-link-item"><i class="bi bi-send"></i></a>
     </nav>
 
     <main id="smooth-wrapper">
-        <div id="smooth-content">
-            
-            <section id="home" class="hero">
-                <div class="reveal-up">
-                    <p class="text-uppercase small mb-3" style="letter-spacing: 10px; color: var(--gold-2);">The Wedding Of</p>
+        <div id="smooth-content" style="position: relative; z-index: 5;">
+
+            <section id="hero" class="hero">
+                <div class="gsap-reveal" data-delay="0">
+                    <p class="font-royal text-uppercase small" style="letter-spacing: 5px; color: var(--gold-1);">The Wedding Celebration Of</p>
                 </div>
-                <div class="reveal-up" style="transition-delay: 0.1s;">
-                    <h1 class="hero-title gold-text font-cinzel">Budi Susanto</h1>
+                
+                <div class="gsap-reveal" data-delay="0.2">
+                    <h1 class="hero-names text-gold-script">Budi Susanto</h1>
                 </div>
-                <div class="reveal-up" style="transition-delay: 0.2s;">
-                    <span class="hero-subtitle">&</span>
+                
+                <div class="gsap-reveal" data-delay="0.4">
+                    <span class="font-latin text-gold-2" style="font-size: 3rem; opacity: 0.8;">&</span>
                 </div>
-                <div class="reveal-up" style="transition-delay: 0.3s;">
-                    <h1 class="hero-title gold-text font-cinzel">Shinta Dewi</h1>
+                
+                <div class="gsap-reveal" data-delay="0.6">
+                    <h1 class="hero-names text-gold-script">Shinta Dewi</h1>
                 </div>
-                <div class="reveal-up mt-5" style="transition-delay: 0.4s;">
-                    <div class="d-flex gap-4 justify-content-center align-items-center text-white-50 small" style="letter-spacing: 3px;">
-                        <span>02 . 02 . 2026</span>
-                        <span>•</span>
-                        <span>JAKARTA</span>
+                
+                <div class="gsap-reveal mt-4" data-delay="0.8">
+                    <div class="glass-card px-4 py-2 d-inline-block rounded-pill border-gold">
+                        <span class="hero-date text-gold-2">Sunday, 02 . 02 . 2026</span>
                     </div>
                 </div>
-                <div class="reveal-up mt-5" style="transition-delay: 0.5s;">
-                    <button class="btn-luxury" onclick="scrollToSection('#couple')">
-                        Open Invitation <i class="bi bi-arrow-down"></i>
-                    </button>
+
+                <div class="gsap-reveal mt-5" data-delay="1.0">
+                    <i class="bi bi-mouse text-gold-1 fs-3 animate-bounce"></i>
+                    <p class="small text-gold-3 mt-2" style="font-size: 10px; letter-spacing: 2px;">SCROLL TO EXPLORE</p>
                 </div>
             </section>
 
-            <section class="section-padding text-center">
-                <div class="container-royal">
-                    <div class="glass-ios p-5 reveal-up">
-                        <i class="bi bi-quote fs-1 text-warning mb-4 d-block"></i>
-                        <h3 class="font-script gold-text mb-4" style="font-size: 2.5rem;">"And among His signs is that He created for you mates from among yourselves..."</h3>
-                        <p class="text-white-50 ls-2">AR-RUM: 21</p>
+            <section class="section-gap text-center">
+                <div class="container">
+                    <div class="glass-card p-5 mx-auto border-gold" style="max-width: 800px;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/22/Basmala.svg" width="200" style="filter: invert(0.8) sepia(1) saturate(5) hue-rotate(10deg);" class="mb-4">
+                        <h3 class="font-latin text-gold-script mb-4" style="font-size: 2.2rem;">"Dan di antara tanda-tanda kekuasaan-Nya..."</h3>
+                        <p class="text-gold-2 lh-lg font-body">
+                            Ia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang.
+                        </p>
+                        <p class="font-royal small text-gold-1 mt-3 ls-2 fw-bold">QS. AR-RUM: 21</p>
                     </div>
                 </div>
             </section>
 
-            <section id="couple" class="section-padding">
-                <div class="container-royal">
-                    <div class="text-center mb-5 reveal-up">
-                        <span class="badge bg-warning text-dark px-3 py-2 rounded-pill mb-3">THE SOVEREIGNS</span>
-                        <h2 class="font-display display-4 gold-text">Groom & Bride</h2>
+            <section id="couple" class="section-gap">
+                <div class="container">
+                    <div class="text-center mb-5 gsap-fade-up">
+                        <span class="text-gold-script fs-1">Groom & Bride</span>
+                        <h2 class="font-royal text-gold-2 display-5 mt-2">Sang Mempelai</h2>
                     </div>
 
-                    <div class="couple-wrapper">
-                        <div class="profile-card glass-ios reveal-up">
-                            <div class="img-frame">
-                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800" alt="Groom">
+                    <div class="row align-items-center g-5">
+                        <div class="col-lg-5 order-2 order-lg-1 gsap-fade-right">
+                            <div class="glass-card p-4 text-center text-lg-end border-gold">
+                                <h2 class="font-royal text-gold-2 mb-1">Budi Susanto</h2>
+                                <p class="text-gold-1 small mb-3">Putra Bpk. Wijaya & Ibu Lestari</p>
+                                <p class="text-gold-2 opacity-75 small mb-4">"Mencintai bukan berarti saling memandang, tetapi melihat ke arah yang sama bersama-sama."</p>
+                                <div class="d-flex justify-content-center justify-content-lg-end gap-3">
+                                    <a href="#" class="text-gold-1"><i class="bi bi-instagram fs-5"></i></a>
+                                    <a href="#" class="text-gold-1"><i class="bi bi-twitter fs-5"></i></a>
+                                </div>
                             </div>
-                            <h2 class="font-display mb-1">Budi Susanto</h2>
-                            <p class="text-warning small ls-2 mb-3">THE ARCHITECT</p>
-                            <p class="text-white-50 small lh-lg">
-                                Putra pertama dari Bapak Wijaya & Ibu Lestari.<br>
-                                "Membangun masa depan dengan fondasi cinta yang kokoh."
-                            </p>
-                            <div class="mt-4">
-                                <a href="#" class="text-white mx-2"><i class="bi bi-instagram"></i></a>
-                                <a href="#" class="text-white mx-2"><i class="bi bi-linkedin"></i></a>
+                        </div>
+                        
+                        <div class="col-lg-2 order-1 order-lg-2 text-center gsap-zoom">
+                            <div class="position-relative d-inline-block">
+                                <div style="width: 200px; height: 300px; border-radius: 100px; overflow: hidden; border: 2px solid var(--gold-1); padding: 5px;">
+                                    <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=500" class="w-100 h-100 object-fit-cover rounded-pill" style="filter: grayscale(20%) sepia(0.3);">
+                                </div>
+                                <div class="position-absolute top-50 start-50 translate-middle" style="width: 250px; height: 350px; border: 1px solid var(--border-gold); border-radius: 120px; z-index: -1;"></div>
                             </div>
                         </div>
 
-                        <div class="profile-card glass-ios reveal-up" style="transition-delay: 0.2s;">
-                            <div class="img-frame">
-                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800" alt="Bride">
-                            </div>
-                            <h2 class="font-display mb-1">Shinta Dewi</h2>
-                            <p class="text-warning small ls-2 mb-3">THE ARTIST</p>
-                            <p class="text-white-50 small lh-lg">
-                                Putri kedua dari Bapak Hartono & Ibu Diana.<br>
-                                "Melukis kebahagiaan di setiap lembar cerita kehidupan."
-                            </p>
-                            <div class="mt-4">
-                                <a href="#" class="text-white mx-2"><i class="bi bi-instagram"></i></a>
-                                <a href="#" class="text-white mx-2"><i class="bi bi-linkedin"></i></a>
+                        <div class="col-lg-5 order-3 order-lg-3 gsap-fade-left">
+                            <div class="glass-card p-4 text-center text-lg-start border-gold">
+                                <h2 class="font-royal text-gold-2 mb-1">Shinta Dewi</h2>
+                                <p class="text-gold-1 small mb-3">Putri Bpk. Hartono & Ibu Diana</p>
+                                <p class="text-gold-2 opacity-75 small mb-4">"Pernikahan adalah mozaik yang kita bangun dengan jutaan momen kecil yang menjadi kisah cinta abadi."</p>
+                                <div class="d-flex justify-content-center justify-content-lg-start gap-3">
+                                    <a href="#" class="text-gold-1"><i class="bi bi-instagram fs-5"></i></a>
+                                    <a href="#" class="text-gold-1"><i class="bi bi-tiktok fs-5"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section id="event" class="section-padding">
-                <div class="container-royal">
-                    <div class="text-center mb-5 reveal-up">
-                        <h2 class="font-display display-4 gold-text">Royal Ceremony</h2>
-                        <p class="text-white-50 mt-3">We invite you to witness our sacred union.</p>
+            <section id="story">
+            <div class="story-container">
+                <div class="text-center mb-5 gsap-reveal">
+                    <p class="font-royal text-gold-1 small">OUR CHRONICLE</p>
+                    <h2 class="display-3 font-royal text-gold-2">Kisah Cinta Kami</h2>
+                </div>
+
+                <div class="story-grid">
+                    <div class="story-card gsap-reveal" data-delay="0.1">
+                        <div class="card-content">
+                            <div class="icon-box"><i class="bi bi-cup-hot"></i></div>
+                            <h5 class="text-gold-1 font-royal">2022</h5>
+                            <h3 class="text-gold-2 font-royal my-3">First Meet</h3>
+                        </div>
+                        <p class="small text-gold-2 opacity-75">Awal mula takdir bekerja, saat dua jiwa bertemu dalam kehangatan suasana kopi sore di Jakarta.</p>
                     </div>
 
+                    <div class="story-card gsap-reveal" data-delay="0.2">
+                        <div class="card-content">
+                            <div class="icon-box"><i class="bi bi-chat-heart"></i></div>
+                            <h5 class="text-gold-1 font-royal">2023</h5>
+                            <h3 class="text-gold-2 font-royal my-3">First Date</h3>
+                        </div>
+                        <p class="small text-gold-2 opacity-75">Perjalanan panjang dimulai. Setiap kata yang terucap menjadi benih kasih yang tumbuh subur.</p>
+                    </div>
+
+                    <div class="story-card gsap-reveal" data-delay="0.3">
+                        <div class="card-content">
+                            <div class="icon-box"><i class="bi bi-gem"></i></div>
+                            <h5 class="text-gold-1 font-royal">2025</h5>
+                            <h3 class="text-gold-2 font-royal my-3">Engagement</h3>
+                        </div>
+                        <p class="small text-gold-2 opacity-75">Satu janji suci di hadapan keluarga besar, mengikat komitmen untuk melangkah ke jenjang pelaminan.</p>
+                    </div>
+
+                    <div class="story-card gsap-reveal" data-delay="0.4">
+                        <div class="card-content">
+                            <div class="icon-box"><i class="bi bi-infinity"></i></div>
+                            <h5 class="text-gold-1 font-royal">2026</h5>
+                            <h3 class="text-gold-2 font-royal my-3">Eternal Vow</h3>
+                        </div>
+                        <p class="small text-gold-2 opacity-75">Hari ini, doa-doa kami terjawab. Menyatu dalam ibadah terlama di bawah naungan restu Ilahi.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+            <section id="event" class="section-gap">
+                <div class="container">
                     <div class="row g-4">
-                        <div class="col-lg-5">
-                            <div class="glass-ios p-5 h-100 reveal-up d-flex flex-column justify-content-center text-center">
-                                <h3 class="font-display mb-4">Akad Nikah</h3>
-                                <div class="py-3 border-top border-bottom border-secondary mb-4">
-                                    <h5 class="m-0 text-warning">08:00 WIB - 10:00 WIB</h5>
-                                </div>
-                                <p class="text-white-50 mb-4">Grand Ballroom<br>The Ritz-Carlton Jakarta</p>
-                                <button class="btn-luxury w-100 justify-content-center mb-3">
-                                    <i class="bi bi-calendar-event"></i> Save The Date
-                                </button>
-                                
-                                <div class="mt-5">
-                                    <h3 class="font-display mb-4">Reception</h3>
-                                    <div class="py-3 border-top border-bottom border-secondary mb-4">
-                                        <h5 class="m-0 text-warning">19:00 WIB - Until End</h5>
+                        <div class="col-lg-6 gsap-fade-right">
+                            <div class="glass-card p-0 h-100 overflow-hidden border-gold">
+                                <img src="https://images.unsplash.com/photo-1519225448526-06456331a895?w=800" class="w-100" style="height: 250px; object-fit: cover; filter: sepia(60%) contrast(1.1);">
+                                <div class="p-4 p-md-5">
+                                    <span class="font-royal text-gold-1 h5">AKAD NIKAH</span>
+                                    <h1 class="font-latin text-gold-2 display-4 my-3">Sacred Vow</h1>
+                                    <div class="d-flex align-items-center gap-3 text-gold-1 mb-2">
+                                        <i class="bi bi-clock"></i> 08:00 WIB - 10:00 WIB
                                     </div>
-                                    <p class="text-white-50">Grand Ballroom<br>The Ritz-Carlton Jakarta</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-7">
-                            <div class="glass-ios p-3 h-100 reveal-up" style="transition-delay: 0.2s;">
-                                <div class="map-container">
-                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.290683070779!2d106.8087703758546!3d-6.225367660965008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f1504958c205%3A0x6280436d4000305f!2sThe%20Ritz-Carlton%20Jakarta%2C%20Pacific%20Place!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                    <div class="d-flex align-items-center gap-3 text-gold-1 mb-4">
+                                        <i class="bi bi-geo-alt"></i> Masjid Raya Al-Azhar
+                                    </div>
                                     
-                                    <div class="map-overlay-btn">
-                                        <a href="https://goo.gl/maps/xyz" target="_blank" class="btn-luxury">
-                                            <i class="bi bi-cursor-fill"></i> Get Directions
-                                        </a>
+                                    <div class="map-wrapper">
+                                        <iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.275828453472!2d106.79720767586514!3d-6.227252060986926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f14545239a9f%3A0xc34a66a337166164!2sMasjid%20Agung%20Al%20Azhar!5e0!3m2!1sid!2sid!4v1707240000000!5m2!1sid!2sid" allowfullscreen="" loading="lazy"></iframe>
                                     </div>
+                                    <a href="https://maps.app.goo.gl/qX8S2P5p5N5Z" target="_blank" class="btn-directions w-100 justify-content-center">
+                                        PETUNJUK ARAH <i class="bi bi-geo-fill"></i>
+                                    </a>
                                 </div>
-                                <div class="d-flex justify-content-center gap-3 mt-4 text-center">
-                                    <div class="timer-box">
-                                        <h3 id="d" class="font-display m-0">00</h3><small>DAYS</small>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 gsap-fade-left">
+                            <div class="glass-card p-0 h-100 overflow-hidden border-gold">
+                                <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800" class="w-100" style="height: 250px; object-fit: cover; filter: sepia(60%) contrast(1.1);">
+                                <div class="p-4 p-md-5">
+                                    <span class="font-royal text-gold-1 h5">RESEPSI</span>
+                                    <h1 class="font-latin text-gold-script display-4 my-3">Royal Feast</h1>
+                                    <div class="d-flex align-items-center gap-3 text-gold-1 mb-2">
+                                        <i class="bi bi-clock"></i> 19:00 WIB - Selesai
                                     </div>
-                                    <div class="timer-box">
-                                        <h3 id="h" class="font-display m-0">00</h3><small>HOURS</small>
+                                    <div class="d-flex align-items-center gap-3 text-gold-1 mb-4">
+                                        <i class="bi bi-geo-alt"></i> Ritz-Carlton Pacific Place
                                     </div>
-                                    <div class="timer-box">
-                                        <h3 id="m" class="font-display m-0">00</h3><small>MINS</small>
+
+                                    <div class="map-wrapper">
+                                        <iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.269784334341!2d106.80749447586515!3d-6.228105560995168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f14fe8d0358f%3A0x6b83f0868f1c8491!2sThe%20Ritz-Carlton%20Jakarta%2C%20Pacific%20Place!5e0!3m2!1sid!2sid!4v1707240000000!5m2!1sid!2sid" allowfullscreen="" loading="lazy"></iframe>
                                     </div>
-                                    <div class="timer-box">
-                                        <h3 id="s" class="font-display m-0">00</h3><small>SECS</small>
-                                    </div>
+                                    <a href="https://maps.app.goo.gl/w9jP9X7k5N5Z" target="_blank" class="btn-directions w-100 justify-content-center">
+                                        PETUNJUK ARAH <i class="bi bi-geo-fill"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -438,106 +606,106 @@
                 </div>
             </section>
 
-            <section id="gallery" class="section-padding">
-                <div class="container-royal">
-                    <div class="text-center mb-5 reveal-up">
-                        <h2 class="font-display display-4 gold-text">Visual Memories</h2>
-                    </div>
-                    <div class="row g-3">
-                        <div class="col-md-4 reveal-up">
-                            <div class="img-frame" style="height: 300px;">
-                                <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=800">
+            <section class="py-5">
+                <div class="container">
+                    <div class="glass-card p-5 text-center gsap-zoom border-gold">
+                        <p class="text-uppercase text-gold-1 ls-2 mb-4">Menuju Hari Bahagia</p>
+                        <div class="d-flex justify-content-center gap-3 gap-md-5 flex-wrap" id="countdown">
+                            <div class="bg-dark p-3 rounded-3 border border-gold" style="min-width: 80px;">
+                                <h2 class="m-0 text-gold-2 font-royal" id="d">00</h2><span class="small text-gold-1">DAYS</span>
                             </div>
-                            <div class="img-frame" style="height: 400px;">
-                                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800">
+                            <div class="bg-dark p-3 rounded-3 border border-gold" style="min-width: 80px;">
+                                <h2 class="m-0 text-gold-2 font-royal" id="h">00</h2><span class="small text-gold-1">HRS</span>
                             </div>
-                        </div>
-                        <div class="col-md-4 reveal-up" style="transition-delay: 0.2s;">
-                            <div class="img-frame" style="height: 500px;">
-                                <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800">
+                            <div class="bg-dark p-3 rounded-3 border border-gold" style="min-width: 80px;">
+                                <h2 class="m-0 text-gold-2 font-royal" id="m">00</h2><span class="small text-gold-1">MIN</span>
                             </div>
-                            <div class="img-frame" style="height: 200px;">
-                                <img src="https://images.unsplash.com/photo-1520854221256-17451cc330e7?w=800">
-                            </div>
-                        </div>
-                        <div class="col-md-4 reveal-up" style="transition-delay: 0.4s;">
-                            <div class="img-frame" style="height: 350px;">
-                                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800">
-                            </div>
-                            <div class="img-frame" style="height: 350px;">
-                                <img src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=800">
+                            <div class="bg-dark p-3 rounded-3 border border-gold" style="min-width: 80px;">
+                                <h2 class="m-0 text-gold-2 font-royal" id="s">00</h2><span class="small text-gold-1">SEC</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section id="rsvp" class="section-padding pb-5">
-                <div class="container-royal">
+            <section class="section-gap bg-black">
+                <div class="container text-center">
+                    <h2 class="font-royal text-gold-1 mb-4">Live Streaming</h2>
+                    <p class="text-gold-2 opacity-75 mb-4">Bergabunglah secara virtual jika Anda tidak dapat hadir.</p>
+                    <div class="glass-card p-2 d-inline-block w-100 border-gold" style="max-width: 800px;">
+                        <div style="aspect-ratio: 16/9; background: #111; border-radius: 15px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                            <i class="bi bi-play-circle display-1 text-gold-1 opacity-50"></i>
+                            <span class="position-absolute bottom-0 start-0 m-3 badge bg-danger animate-pulse">OFFLINE</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-4 border-top border-bottom border-dark bg-dark overflow-hidden">
+                <div style="white-space: nowrap; animation: scrollLeft 20s linear infinite;">
+                    <span class="mx-4 text-gold-1 font-latin fs-4">"Selamat Budi & Shinta!"</span> • 
+                    <span class="mx-4 text-gold-1 font-latin fs-4">"Semoga Samawa selamanya."</span> • 
+                    <span class="mx-4 text-gold-1 font-latin fs-4">"Happy Wedding my best friend!"</span> • 
+                    <span class="mx-4 text-gold-1 font-latin fs-4">"Doa terbaik untuk kalian berdua."</span> • 
+                    <span class="mx-4 text-gold-1 font-latin fs-4">"Langgeng sampai kakek nenek."</span> • 
+                    <span class="mx-4 text-gold-1 font-latin fs-4">"Welcome to the club!"</span> •
+                    <span class="mx-4 text-gold-1 font-latin fs-4">"Bahagia selalu yaa..."</span> •
+                </div>
+            </section>
+
+            <section id="rsvp" class="section-gap">
+                <div class="container">
                     <div class="row g-5">
-                        <div class="col-lg-5">
-                            <div class="glass-ios p-5 h-100 reveal-up">
-                                <h3 class="font-display mb-4 text-center">Wedding Gift</h3>
-                                <p class="text-center text-white-50 mb-5 small">Your presence is enough, but if you wish to give a token of love:</p>
+                        <div class="col-lg-5 gsap-fade-right">
+                            <div class="glass-card p-5 h-100 border-gold">
+                                <h2 class="font-royal text-gold-2 mb-4">Wedding Gift</h2>
+                                <p class="text-gold-1 small mb-4">Kehadiran Anda adalah kado terindah. Namun jika ingin memberikan tanda kasih:</p>
                                 
-                                <div class="bg-black border border-secondary rounded-3 p-4 mb-3 position-relative">
-                                    <div class="d-flex justify-content-between align-items-center mb-2">
-                                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" width="80" style="filter: invert(1);">
-                                        <button class="btn btn-sm btn-outline-warning rounded-pill px-3" onclick="alert('Copied!')">Copy</button>
+                                <div class="p-3 bg-black rounded-3 mb-3 border border-gold position-relative">
+                                    <div class="d-flex justify-content-between">
+                                        <h5 class="font-royal text-gold-1">BCA</h5>
+                                        <i class="bi bi-credit-card text-gold-1"></i>
                                     </div>
-                                    <h4 class="font-ui m-0 text-white letter-spacing-2">123 456 7890</h4>
-                                    <p class="m-0 text-white-50 small">a.n Budi Susanto</p>
+                                    <h3 class="text-gold-2 my-2 ls-2">123 456 789</h3>
+                                    <small class="text-gold-3">A.N Budi Susanto</small>
+                                    <button class="btn btn-sm btn-outline-warning position-absolute top-50 end-0 translate-middle-y me-3" onclick="alert('Copied!')">COPY</button>
                                 </div>
-
-                                <div class="bg-black border border-secondary rounded-3 p-4 position-relative">
-                                    <div class="d-flex justify-content-between align-items-center mb-2">
-                                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Bank_Mandiri_logo_2016.svg" width="80" style="filter: invert(1);">
-                                        <button class="btn btn-sm btn-outline-warning rounded-pill px-3" onclick="alert('Copied!')">Copy</button>
+                                <div class="p-3 bg-black rounded-3 mb-3 border border-gold position-relative">
+                                    <div class="d-flex justify-content-between">
+                                        <h5 class="font-royal text-gold-1">MANDIRI</h5>
+                                        <i class="bi bi-wallet2 text-gold-1"></i>
                                     </div>
-                                    <h4 class="font-ui m-0 text-white letter-spacing-2">098 765 4321</h4>
-                                    <p class="m-0 text-white-50 small">a.n Shinta Dewi</p>
+                                    <h3 class="text-gold-2 my-2 ls-2">098 765 432</h3>
+                                    <small class="text-gold-3">A.N Shinta Dewi</small>
+                                    <button class="btn btn-sm btn-outline-warning position-absolute top-50 end-0 translate-middle-y me-3" onclick="alert('Copied!')">COPY</button>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-lg-7">
-                            <div class="glass-ios p-5 h-100 reveal-up" style="transition-delay: 0.2s;">
-                                <h3 class="font-display mb-2">RSVP</h3>
-                                <p class="text-white-50 mb-4">Please confirm your attendance.</p>
-                                
+                        <div class="col-lg-7 gsap-fade-left">
+                            <div class="glass-card p-5 h-100 border-gold">
+                                <h2 class="font-royal text-gold-2 mb-4">RSVP</h2>
                                 <form>
                                     <div class="mb-4">
-                                        <label class="form-label small text-warning ls-2">FULL NAME</label>
-                                        <input type="text" class="form-control bg-transparent text-white border-0 border-bottom rounded-0 py-3" placeholder="Enter your name">
+                                        <input type="text" class="form-control-lux w-100" placeholder="Nama Lengkap">
                                     </div>
                                     <div class="row mb-4">
-                                        <div class="col-md-6">
-                                            <label class="form-label small text-warning ls-2">PHONE</label>
-                                            <input type="tel" class="form-control bg-transparent text-white border-0 border-bottom rounded-0 py-3" placeholder="+62">
+                                        <div class="col-6">
+                                            <input type="text" class="form-control-lux w-100" placeholder="No. WhatsApp">
                                         </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label small text-warning ls-2">GUESTS</label>
-                                            <select class="form-select bg-transparent text-white border-0 border-bottom rounded-0 py-3">
-                                                <option class="bg-dark">1 Person</option>
-                                                <option class="bg-dark">2 Persons</option>
+                                        <div class="col-6">
+                                            <select class="form-control-lux w-100 bg-transparent text-gold-2">
+                                                <option class="bg-dark">1 Orang</option>
+                                                <option class="bg-dark">2 Orang</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="mb-4">
-                                        <label class="form-label small text-warning ls-2">MESSAGE</label>
-                                        <textarea class="form-control bg-transparent text-white border-0 border-bottom rounded-0 py-3" rows="3" placeholder="Write your wishes..."></textarea>
+                                        <textarea class="form-control-lux w-100" rows="3" placeholder="Ucapan & Doa"></textarea>
                                     </div>
-                                    <div class="mb-4 d-flex gap-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input bg-dark border-secondary" type="radio" name="attend" checked>
-                                            <label class="form-check-label text-white">Will Attend</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input bg-dark border-secondary" type="radio" name="attend">
-                                            <label class="form-check-label text-white">Sorry, Can't Come</label>
-                                        </div>
+                                    <div class="d-grid">
+                                        <button type="button" class="btn-gold">KIRIM KONFIRMASI</button>
                                     </div>
-                                    <button type="button" class="btn-luxury w-100 mt-3">Confirm Attendance</button>
                                 </form>
                             </div>
                         </div>
@@ -545,11 +713,22 @@
                 </div>
             </section>
 
-            <footer class="py-5 text-center position-relative z-10">
-                <h1 class="font-script gold-text" style="font-size: 3rem;">B & S</h1>
-                <p class="text-white-50 small mt-3">THANK YOU FOR YOUR LOVE & SUPPORT</p>
-                <div class="mt-5 border-top border-secondary pt-4 d-inline-block px-5">
-                    <p class="small text-white-50" style="font-size: 10px; letter-spacing: 3px;">CREATED WITH EXCELLENCE BY GEMINI</p>
+            <section class="py-5 text-center">
+                <div class="container">
+                    <h6 class="text-gold-1 ls-2 mb-4">PROTOKOL KESEHATAN</h6>
+                    <div class="d-flex justify-content-center gap-4 flex-wrap text-gold-1 fs-3">
+                        <i class="bi bi-mask" title="Pakai Masker"></i>
+                        <i class="bi bi-droplet-half" title="Cuci Tangan"></i>
+                        <i class="bi bi-people" title="Jaga Jarak"></i>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="text-center py-5 bg-black border-top border-gold">
+                <h1 class="font-latin text-gold-script display-3">B & S</h1>
+                <p class="text-gold-1 small mt-2">Terima kasih atas doa dan restu Anda.</p>
+                <div class="mt-4 text-gold-3 opacity-50" style="font-size: 10px; letter-spacing: 4px;">
+                    IMPERIAL EDITION • DESIGNED BY GEMINI
                 </div>
             </footer>
         </div>
@@ -563,190 +742,212 @@
     <script>
         /**
          * --------------------------------------------------------------------------
-         * SYSTEM: GEMINI ROYAL ENGINE v100
-         * MODULES: WebGL, AudioContext, ScrollPhysics, DomManipulation
+         * MAGNUM OPUS ENGINE v10.5
          * --------------------------------------------------------------------------
          */
 
-        /* [A] INITIALIZATION & PRELOADER */
-        window.onload = () => {
-            const tl = gsap.timeline();
-            tl.to("#progress", { width: "100%", duration: 1.5, ease: "power2.inOut" })
-              .to("#preloader", { yPercent: -100, duration: 1.2, ease: "expo.inOut" })
-              .from(".hero-title", { y: 100, opacity: 0, duration: 1.5, stagger: 0.2, ease: "power4.out" }, "-=0.5");
-        };
-
-        /* [B] SMOOTH SCROLL (LENIS) */
-        const lenis = new Lenis({
-            duration: 1.5,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            direction: 'vertical',
-            gestureDirection: 'vertical',
-            smooth: true,
-            mouseMultiplier: 1,
-            smoothTouch: false,
-            touchMultiplier: 2,
-        });
-
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
-
-        function scrollToSection(id) {
-            lenis.scrollTo(id);
-        }
-
-        /* [C] BACKGROUND ENGINE (THREE.JS GOLDEN VORTEX) */
-        const initWebGL = () => {
-            const canvas = document.getElementById('bg-canvas');
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+        document.addEventListener("DOMContentLoaded", () => {
             
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            // [A] PRELOADER SEQUENCE
+            const tlLoader = gsap.timeline();
+            tlLoader.to("#loader-bar", { width: "100%", duration: 1.5, ease: "power2.inOut" })
+                    .to("#loader", { yPercent: -100, duration: 1, ease: "expo.inOut", delay: 0.2 });
 
-            // PARTICLES
-            const particlesGeometry = new THREE.BufferGeometry();
-            const particlesCount = 2000;
-            const posArray = new Float32Array(particlesCount * 3);
+            // [B] SMOOTH SCROLL INIT
+            const lenis = new Lenis({
+                duration: 1.2,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                direction: 'vertical',
+                gestureDirection: 'vertical',
+                smooth: true,
+                mouseMultiplier: 1,
+                smoothTouch: false,
+                touchMultiplier: 2,
+            });
 
-            for(let i = 0; i < particlesCount * 3; i++) {
-                posArray[i] = (Math.random() - 0.5) * 15; // Spread
+            function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
             }
+            requestAnimationFrame(raf);
 
-            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-
-            // GOLD MATERIAL
-            const material = new THREE.PointsMaterial({
-                size: 0.015,
-                color: 0xBF953F, // Gold color
-                transparent: true,
-                opacity: 0.8,
-                blending: THREE.AdditiveBlending
-            });
-
-            const particlesMesh = new THREE.Points(particlesGeometry, material);
-            scene.add(particlesMesh);
-            camera.position.z = 2;
-
-            // ANIMATION LOOP
-            let mouseX = 0;
-            let mouseY = 0;
-
-            document.addEventListener('mousemove', (event) => {
-                mouseX = event.clientX / window.innerWidth - 0.5;
-                mouseY = event.clientY / window.innerHeight - 0.5;
-            });
-
-            const animate = () => {
-                requestAnimationFrame(animate);
-
-                // Smooth rotation
-                particlesMesh.rotation.y += 0.0005;
-                particlesMesh.rotation.x += 0.0002;
-
-                // Mouse interaction parallax
-                particlesMesh.rotation.y += 0.05 * (mouseX - particlesMesh.rotation.y) * 0.05;
-                particlesMesh.rotation.x += 0.05 * (mouseY - particlesMesh.rotation.x) * 0.05;
-
-                renderer.render(scene, camera);
-            };
-            animate();
-
-            // RESIZE HANDLE
-            window.addEventListener('resize', () => {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
+            // [C] THREE.JS STARFIELD (Background)
+            const initThreeJS = () => {
+                const canvas = document.getElementById('starfield');
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
+                
                 renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+                // Create Stars
+                const particlesGeometry = new THREE.BufferGeometry();
+                const count = 1500;
+                const posArray = new Float32Array(count * 3);
+
+                for(let i = 0; i < count * 3; i++) {
+                    posArray[i] = (Math.random() - 0.5) * 15; // Spread
+                }
+
+                particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+
+                const material = new THREE.PointsMaterial({
+                    size: 0.012,
+                    color: 0xD4AF37, // Gold Color
+                    transparent: true,
+                    opacity: 0.8,
+                    blending: THREE.AdditiveBlending
+                });
+
+                const particlesMesh = new THREE.Points(particlesGeometry, material);
+                scene.add(particlesMesh);
+                camera.position.z = 2;
+
+                // Mouse Move Effect
+                let mouseX = 0;
+                let mouseY = 0;
+                
+                document.addEventListener('mousemove', (e) => {
+                    mouseX = e.clientX / window.innerWidth - 0.5;
+                    mouseY = e.clientY / window.innerHeight - 0.5;
+                });
+
+                // Animation Loop
+                const animate = () => {
+                    requestAnimationFrame(animate);
+                    particlesMesh.rotation.y += 0.0003;
+                    particlesMesh.rotation.x += 0.0001;
+                    
+                    // Parallax
+                    particlesMesh.rotation.y += 0.03 * (mouseX - particlesMesh.rotation.y);
+                    particlesMesh.rotation.x += 0.03 * (mouseY - particlesMesh.rotation.x);
+                    
+                    renderer.render(scene, camera);
+                };
+                animate();
+
+                // Resize Handler
+                window.addEventListener('resize', () => {
+                    camera.aspect = window.innerWidth / window.innerHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(window.innerWidth, window.innerHeight);
+                });
+            };
+            initThreeJS();
+
+            // [D] GSAP SCROLL ANIMATIONS
+            gsap.registerPlugin(ScrollTrigger);
+
+            // 1. Reveal Elements (Basic Fade Up)
+            const revealElements = document.querySelectorAll(".gsap-reveal");
+            revealElements.forEach(el => {
+                gsap.fromTo(el, 
+                    { y: 50, opacity: 0 },
+                    {
+                        y: 0, opacity: 1, duration: 1.2, ease: "power3.out",
+                        delay: el.dataset.delay || 0,
+                        scrollTrigger: { trigger: el, start: "top 90%" }
+                    }
+                );
             });
-        };
-        initWebGL();
 
-        /* [D] SCROLL ANIMATIONS (GSAP SCROLLTRIGGER) */
-        gsap.registerPlugin(ScrollTrigger);
-
-        const revealElements = document.querySelectorAll('.reveal-up');
-        revealElements.forEach(element => {
-            gsap.to(element, {
-                scrollTrigger: {
-                    trigger: element,
-                    start: "top 85%",
-                    toggleActions: "play none none reverse"
-                },
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power3.out"
+            // 2. Directional Fades
+            gsap.utils.toArray('.gsap-fade-right').forEach(el => {
+                gsap.from(el, {
+                    scrollTrigger: { trigger: el, start: "top 80%" },
+                    x: -50, opacity: 0, duration: 1.5, ease: "power2.out"
+                });
             });
-        });
 
-        /* [E] MUSIC PLAYER LOGIC */
-        const musicBtn = document.getElementById('music-btn');
-        const audio = document.getElementById('bg-music');
-        const vinyl = document.getElementById('vinyl');
-        const playIcon = document.getElementById('play-icon');
-        let isPlaying = false;
+            gsap.utils.toArray('.gsap-fade-left').forEach(el => {
+                gsap.from(el, {
+                    scrollTrigger: { trigger: el, start: "top 80%" },
+                    x: 50, opacity: 0, duration: 1.5, ease: "power2.out"
+                });
+            });
 
-        musicBtn.addEventListener('click', () => {
-            if (!isPlaying) {
-                audio.play();
-                vinyl.classList.add('vinyl-spinning');
-                playIcon.classList.remove('bi-play-fill');
-                playIcon.classList.add('bi-pause-fill');
-                isPlaying = true;
-            } else {
-                audio.pause();
-                vinyl.classList.remove('vinyl-spinning');
-                playIcon.classList.remove('bi-pause-fill');
-                playIcon.classList.add('bi-play-fill');
-                isPlaying = false;
-            }
-        });
+            gsap.utils.toArray('.gsap-fade-up').forEach(el => {
+                gsap.from(el, {
+                    scrollTrigger: { trigger: el, start: "top 85%" },
+                    y: 50, opacity: 0, duration: 1, ease: "power2.out"
+                });
+            });
 
-        /* [F] COUNTDOWN TIMER */
-        const targetDate = new Date("Feb 2, 2026 08:00:00").getTime();
-        
-        setInterval(() => {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
+            // 3. Zoom Effect
+            gsap.utils.toArray('.gsap-zoom').forEach(el => {
+                gsap.from(el, {
+                    scrollTrigger: { trigger: el, start: "top 85%" },
+                    scale: 0.8, opacity: 0, duration: 1.2, ease: "back.out(1.7)"
+                });
+            });
 
-            const d = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((distance % (1000 * 60)) / 1000);
+            // [E] MUSIC PLAYER LOGIC
+            const musicToggle = document.getElementById('music-toggle');
+            const bgAudio = document.getElementById('bg-audio');
+            const vinyl = document.getElementById('vinyl');
+            let isMusicPlaying = false;
 
-            document.getElementById('d').innerText = d < 10 ? '0'+d : d;
-            document.getElementById('h').innerText = h < 10 ? '0'+h : h;
-            document.getElementById('m').innerText = m < 10 ? '0'+m : m;
-            document.getElementById('s').innerText = s < 10 ? '0'+s : s;
-        }, 1000);
-
-        /* [G] ACTIVE NAVIGATION STATE */
-        const navItems = document.querySelectorAll('.dock-item');
-        const sections = document.querySelectorAll('section');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if(pageYOffset >= (sectionTop - sectionHeight / 3)) {
-                    current = section.getAttribute('id');
+            musicToggle.addEventListener('click', () => {
+                if(!isMusicPlaying) {
+                    bgAudio.play();
+                    vinyl.classList.add('playing');
+                    musicToggle.style.borderColor = 'var(--gold-1)';
+                    isMusicPlaying = true;
+                } else {
+                    bgAudio.pause();
+                    vinyl.classList.remove('playing');
+                    musicToggle.style.borderColor = 'var(--border-faint)';
+                    isMusicPlaying = false;
                 }
             });
 
-            navItems.forEach(item => {
-                item.classList.remove('active');
-                if(item.getAttribute('href').includes(current)) {
-                    item.classList.add('active');
-                }
-            });
-        });
+            // [F] COUNTDOWN TIMER
+            const targetDate = new Date("Feb 2, 2026 08:00:00").getTime();
+            const timer = setInterval(() => {
+                const now = new Date().getTime();
+                const dist = targetDate - now;
 
-        console.log("%c ROYAL WEDDING ENGINE v100 LOADED ", "background: #BF953F; color: #000; font-size: 12px; font-weight: bold; padding: 5px;");
+                const d = Math.floor(dist / (1000 * 60 * 60 * 24));
+                const h = Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((dist % (1000 * 60)) / 1000);
+
+                document.getElementById('d').innerText = d < 10 ? '0'+d : d;
+                document.getElementById('h').innerText = h < 10 ? '0'+h : h;
+                document.getElementById('m').innerText = m < 10 ? '0'+m : m;
+                document.getElementById('s').innerText = s < 10 ? '0'+s : s;
+
+                if (dist < 0) {
+                    clearInterval(timer);
+                    document.getElementById('countdown').innerHTML = "<h3 class='text-gold-1'>THE DAY IS HERE</h3>";
+                }
+            }, 1000);
+
+            // [G] NAV ACTIVE STATE
+            const sections = document.querySelectorAll("section");
+            const navLinks = document.querySelectorAll(".nav-link-item");
+
+            window.addEventListener("scroll", () => {
+                let current = "";
+                sections.forEach((section) => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= sectionTop - sectionHeight / 3) {
+                        current = section.getAttribute("id");
+                    }
+                });
+
+                navLinks.forEach((li) => {
+                    li.classList.remove("active");
+                    if (li.getAttribute("href").includes(current)) {
+                        li.classList.add("active");
+                    }
+                });
+            });
+
+            console.log("%c IMPERIAL LOVE LOADED ", "background: #D4AF37; color: #000; font-size: 14px; font-weight: bold; padding: 5px;");
+        });
     </script>
 </body>
 </html>
